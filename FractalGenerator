@@ -1,0 +1,59 @@
+"```python
+import turtle
+import random
+
+def draw_leaves(t, length):
+    t.fillcolor(random.choice([""forest green"", ""lime green"", ""dark green"", ""green""]))
+    t.begin_fill()
+    t.rt(45)
+    t.fd(length/2)
+    t.lt(45)
+    t.fd(length)
+    t.lt(135)
+    t.fd(length/2)
+    t.lt(45)
+    t.fd(length/2)
+    t.lt(135)
+    t.fd(length)
+    t.lt(45)
+    t.fd(length/2)
+    t.lt(135)
+    t.end_fill()
+
+def draw_tree(t, branch_length):
+    angle_factor = random.uniform(22, 30)
+    sf1 = random.uniform(0.6, 0.8)
+    sf2 = random.uniform(0.6, 0.8)
+
+    if branch_length > 20:
+        t.width(branch_length * 0.05)
+        t.fd(branch_length)
+        t.lt(angle_factor)
+        t.color(""brown"")
+        draw_tree(t, branch_length * sf1)
+        t.color(""black"")
+        t.rt(angle_factor * 2)
+        t.color(""brown"")
+        draw_tree(t, branch_length * sf2)
+        t.color(""black"")
+        t.lt(angle_factor)
+        t.bk(branch_length)
+    else:
+        draw_leaves(t, branch_length)
+
+def create_art():
+    screen = turtle.Screen()
+    t = turtle.Turtle(shape=""blank"")
+    t.hideturtle()
+    t.pu()
+    t.speed(0)
+    t.lt(90)
+    t.bk(300)
+    t.pd()
+    t.color(""brown"")
+    draw_tree(t, 100)
+    screen.mainloop()
+
+create_art()
+```
+这段代码使用 Python 的 Turtle 图形库来绘制一个具有分形结构的随机树，并在树的末端绘制带有随机颜色的叶子。特殊符号分隔的标题为 ""FractalGenerator""。"
